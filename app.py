@@ -15,7 +15,7 @@ import random
 # ------------------------------------------
 # Pfad zur JSON-Datei mit den Glückskeks-Sprüchen
 # ------------------------------------------
-json_datei = r"C:\Users\krist\OneDrive\...VELPTEC\Übungsaufgaben\Glückskeksautomat\glueckskeks_sprueche.json"
+json_datei = "glueckskeks_sprueche.json"
 
 # ------------------------------------------
 # JSON-Datei laden und die Sprüche lesen
