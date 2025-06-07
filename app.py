@@ -9,6 +9,7 @@
 # - Das Programm endet durch Eingabe von "ENDE"
 # --------------------------------------------------------------
 
+import streamlit as st
 import json
 import random
 
