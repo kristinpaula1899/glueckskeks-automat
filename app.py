@@ -13,43 +13,26 @@ import streamlit as st
 import json
 import random
 
-# ------------------------------------------
-# Pfad zur JSON-Datei mit den Glückskeks-Sprüchen
-# ------------------------------------------
-json_datei = "glueckskeks_sprueche.json"
+# Titel und Beschreibung anzeigen
+st.title("🥠 Glückskeks-Automat")
+st.markdown("Schreib deine Stimmung in das Feld unten – egal ob hungrig, wütend oder einfach meh ...")
 
-# ------------------------------------------
-# JSON-Datei laden und die Sprüche lesen
-# ------------------------------------------
-try:
-    with open(json_datei, "r", encoding="utf-8") as f:
+# Eingabe durch Benutzer
+stimmung = st.text_input("🧠 Wie fühlst du dich gerade?")
+
+# Sprüche aus JSON laden
+def lade_sprueche():
+    with open("glueckskeks_sprueche.json", "r", encoding="utf-8") as f:
         daten = json.load(f)
-        sprueche = daten["sprueche"]
-except FileNotFoundError:
-    print("❌ Die JSON-Datei mit den Glückskekssprüchen wurde nicht gefunden.")
-    exit()
+        return daten["sprueche"]
 
-# ------------------------------------------
-# Begrüßung und kurze Anleitung
-# ------------------------------------------
-print("🥠 Willkommen im Glückskeks-Automaten!")
-print("Gib deine Stimmung ein (z.B. verliebt, verärgert, hungrig, verlassen, glücklich) ...")
-print("Oder tippe 'ENDE', um das Programm zu beenden.\n")
+sprueche = lade_sprueche()
 
-# ------------------------------------------
-# Haupt-Programmschleife
-# ------------------------------------------
-while True:
-    stimmung = input("🧠 Deine Stimmung: ").strip().lower()
-
-    if stimmung == "ende":
-        print("👋 Auf Wiedersehen – und vergiss nicht: Glück steckt oft im Kleinen!")
-        break
-
-    # Die Stimmung beeinflusst nichts – wir ziehen immer zufällig
-    spruch = random.choice(sprueche)
-
-    print("\n🥠 Dein Glückskeks sagt:")
+# Button anzeigen und Spruch ausgeben
+if stimmung:
+    if st.button("🎯 Keks ziehen!"):
+        spruch = random.choice(sprueche)
+        st.success(f"🥠 Dein Glückskeks sagt:\n\n**{spruch}**")
     print("👉", spruch)
     print("-" * 50)
 
