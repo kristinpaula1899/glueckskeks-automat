@@ -33,6 +33,5 @@ if stimmung:
     if st.button("🎯 Keks ziehen!"):
         spruch = random.choice(sprueche)
         st.success(f"🥠 Dein Glückskeks sagt:\n\n**{spruch}**")
-    print("👉", spruch)
-    print("-" * 50)
+
 
